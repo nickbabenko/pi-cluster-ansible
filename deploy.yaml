@@ -1,0 +1,5 @@
+---
+- hosts: nodes
+  become: yes
+  roles:
+    - role: mqttreporter

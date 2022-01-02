@@ -1,0 +1,66 @@
+- name: Install dependencies
+  apt:
+    pkg:
+      - git
+      - python3
+      - python3-pip
+      - python3-tzlocal
+      - python3-sdnotify
+      - python3-colorama
+      - python3-unidecode
+      - python3-paho-mqtt
+      - libraspberrypi-bin
+
+- name: Download MQTT reporter
+  ansible.builtin.git:
+    repo: https://github.com/ironsheep/RPi-Reporter-MQTT2HA-Daemon.git
+    dest: /opt/RPi-Reporter-MQTT2HA-Daemon
+
+- name: Setup MQTT reporter deps
+  pip:
+    requirements: /opt/RPi-Reporter-MQTT2HA-Daemon/requirements.txt
+
+- name: Copy config dist file
+  ansible.builtin.copy:
+    src: /opt/RPi-Reporter-MQTT2HA-Daemon/config.ini.dist
+    dest: /opt/RPi-Reporter-MQTT2HA-Daemon/config.ini
+    remote_src: yes
+
+- name: Set mqtt username
+  community.general.ini_file:
+    path: /opt/RPi-Reporter-MQTT2HA-Daemon/config.ini
+    section: MQTT
+    option: hostname
+    value: "{{ mqtt_hostname }}"
+
+- name: Set mqtt password
+  community.general.ini_file:
+    path: /opt/RPi-Reporter-MQTT2HA-Daemon/config.ini
+    section: MQTT
+    option: port
+    value: "{{ mqtt_port }}"
+
+- name: Add daemon group
+  ansible.builtin.group:
+    name: daemon
+
+- name: Add video group
+  ansible.builtin.group:
+    name: video
+
+- name: Add daemon user
+  ansible.builtin.user:
+    name: daemon
+    groups: daemon,video
+
+- name: Add service symlink
+  ansible.builtin.file:
+    src: /opt/RPi-Reporter-MQTT2HA-Daemon/isp-rpi-reporter.service
+    dest: /etc/systemd/system/isp-rpi-reporter.service
+    state: link
+
+- name: Start service
+  ansible.builtin.systemd:
+    state: restarted
+    daemon_reload: yes
+    name: isp-rpi-reporter.service
