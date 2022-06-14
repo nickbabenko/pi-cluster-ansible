@@ -3,3 +3,19 @@
   become: yes
   roles:
     - role: mqttreporter
+
+- hosts: nodes
+  gather_facts: yes
+  become: yes
+  roles:
+    - role: prereq
+    - role: download
+    - role: raspberrypi
+# - hosts: master
+#   become: yes
+#   roles:
+#     - role: k3s/master
+- hosts: nodes
+  become: yes
+  roles:
+    - role: k3s/node
