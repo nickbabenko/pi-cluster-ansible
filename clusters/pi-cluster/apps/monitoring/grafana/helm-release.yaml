@@ -36,4 +36,8 @@ spec:
         - secretName: home-helm-grafana
           hosts:
             - grafana.nickbabenko.com
+    persistence:
+      type: pvc
+      enabled: true
+      storageClassName: longhorn
 
