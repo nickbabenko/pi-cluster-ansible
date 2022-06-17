@@ -15,9 +15,6 @@ spec:
         name: prometheus-community
         namespace: flux-system
       interval: 5m
-  dependsOn:
-    - name: prometheus
-      namespace: monitoring
   install:
     createNamespace: true
     remediation:
