@@ -15,9 +15,6 @@ spec:
         name: grafana
         namespace: flux-system
       interval: 5m
-  dependsOn:
-    - name: prometheus
-      namespace: monitoring
   install:
     createNamespace: true
     remediation:
