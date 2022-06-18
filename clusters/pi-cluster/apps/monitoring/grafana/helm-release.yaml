@@ -33,7 +33,7 @@ spec:
         - grafana.local
         - grafana.nickbabenko.com
       tls:
-        - secretName: home-helm-grafana
+        - secretName: ingress-tls-grafana
           hosts:
             - grafana.nickbabenko.com
     persistence:

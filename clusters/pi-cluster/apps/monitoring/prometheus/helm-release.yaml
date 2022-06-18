@@ -22,3 +22,19 @@ spec:
   upgrade:
     remediation:
       retries: 3
+  values:
+    alertmanager:
+      persistentVolume:
+        storageClass: longhorn
+    server:
+      ingress:
+        enabled: true
+        hosts:
+          - prometheus.local
+          - prometheus.nickbabenko.com
+        tls:
+          - secretName: ingress-tls-prometheus
+      persistentVolume:
+        storageClass: longhorn
+    pushgateway:
+      enabled: false
