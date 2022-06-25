@@ -1,0 +1,77 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: zigbee2mqtt
+  namespace: home
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: zigbee2mqtt
+      version: 9.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    persistence:
+      data:
+        enabled: true
+        mountPath: /data
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: longhorn
+        volumeName: data
+      usb:
+        enabled: true
+        type: hostPath
+        hostPath: /dev/ttyUSB0
+    securityContext:
+      privileged: true
+    config:
+      mqtt:
+        server: "mqtt://mosquitto"
+      serial:
+        port: /dev/ttyUSB0
+      advanced:
+        rtscts: false
+        log_level: debug
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                    - zigbee-controller
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          nginx.org/websocket-services: zigbee2mqtt
+          cert-manager.io/issuer: "letsencrypt-prod"
+        hosts:
+          - host: zigbee2mqtt.local
+            paths:
+              - path: /
+          - host: zigbee2mqtt.nickbabenko.com
+            paths:
+              - path: /
+        tls:
+          - secretName: certmanager-tls-zigbee2mqtt
+            hosts:
+              - zigbee2mqtt.nickbabenko.com
+
+
+

@@ -1,0 +1,60 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: homebridge
+  namespace: home
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: homebridge
+      version: 5.1.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    env:
+      TZ: "Europe/London"
+      PGID: 0
+      PUID: 0
+    persistence:
+      config:
+        enabled: true
+        mountPath: /homebridge
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: longhorn
+        volumeName: config
+    hostNetwork: true
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          nginx.org/websocket-services: homebridge
+          cert-manager.io/issuer: "letsencrypt-prod"
+        ingressClassName: nginx
+        hosts:
+          - host: homebridge.local
+            paths:
+              - path: /
+          - host: homebridge.nickbabenko.com
+            paths:
+              - path: /
+        tls:
+          - secretName: certmanager-tls-homebridge
+            hosts:
+              - homebridge.nickbabenko.com
+              - homebridge.local
+    podSecurityContext:
+      fsGroup: 0
+

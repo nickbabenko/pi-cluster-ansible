@@ -5,4 +5,5 @@ resources:
 - cert-manager.yaml
 - networking.yaml
 - monitoring.yaml
+- home.yaml
 - storage.yaml
