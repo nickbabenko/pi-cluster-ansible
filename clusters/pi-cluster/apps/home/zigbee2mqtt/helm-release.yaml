@@ -30,7 +30,6 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         storageClass: longhorn
-        volumeName: data
       usb:
         enabled: true
         type: hostPath

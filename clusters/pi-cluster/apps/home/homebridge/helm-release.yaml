@@ -34,7 +34,6 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         storageClass: longhorn
-        volumeName: config
     hostNetwork: true
     ingress:
       main:
