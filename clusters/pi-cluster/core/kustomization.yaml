@@ -5,5 +5,5 @@ resources:
   - namespaces
   - cert-manager
   - alert
-  # - provider
+  - provider
   - longhorn
