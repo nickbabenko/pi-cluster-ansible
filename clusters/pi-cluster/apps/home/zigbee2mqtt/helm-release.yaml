@@ -44,6 +44,7 @@ spec:
       advanced:
         rtscts: false
         log_level: debug
+        channel: 26
     affinity:
       nodeAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
