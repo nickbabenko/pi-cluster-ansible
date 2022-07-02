@@ -6,7 +6,7 @@
     - role: prereq
     - role: download
     - role: raspberrypi
-    - role: mqttreporter
+    # - role: mqttreporter
 - hosts: master
   become: yes
   roles:
