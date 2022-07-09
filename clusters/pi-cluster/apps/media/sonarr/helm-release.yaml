@@ -12,7 +12,7 @@ spec:
       version: 16.3.2
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: helm-at-home
         namespace: flux-system
       interval: 5m
   install:
