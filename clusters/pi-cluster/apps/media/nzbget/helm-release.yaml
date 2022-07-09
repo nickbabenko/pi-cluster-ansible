@@ -29,9 +29,10 @@ spec:
     ingress:
       enabled: true
       ingressClassName: nginx
-      path: /
       hosts:
-        - nzbget.local
+        - host: nzbget.local
+          paths:
+            - path: /
     persistence:
       config:
         enabled: true
