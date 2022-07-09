@@ -25,7 +25,7 @@ spec:
   values:
     env:
       TZ: "Europe/London"
-      UMASK: "022o
+      UMASK: "022"
       MONO_TLS_PROVIDER: btls
     persistence:
       config:
