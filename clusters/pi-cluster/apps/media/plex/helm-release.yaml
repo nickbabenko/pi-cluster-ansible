@@ -25,7 +25,7 @@ spec:
   values:
     env:
       TZ: "Europe/London"
-      PLEX_CLAIM: claim-i_MHUcPw7SaBPxxQ5Ss7
+      PLEX_CLAIM: claim-AbNrvsezefKDKZPWiTZm 
     hostNetwork: true
     podSecurityContext:
       runAsUser: 568
