@@ -1,0 +1,61 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nzbget
+  namespace: home
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: nzbget
+      version: 12.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    env:
+      TZ: "Europe/London"
+      UMASK: "022"
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      path: /
+      hosts:
+        - nzbget.local
+    persistence:
+      config:
+        enabled: true
+        mountPath: /config
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: longhorn
+      media:
+        enabled: true
+        mountPath: /media
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "192.168.0.59"
+            path: "/volume2/Media"
+    podSecurityContext:
+      runAsUser: 1026
+      runAsGroup: 100
+      fsGroup: 100
+      fsGroupChangePolicy: "Always"
+    resources:
+      limits:
+        cpu: 750m
+        memory: 1024Mi
+      requests:
+        cpu: 750m
+        memory: 1024Mi

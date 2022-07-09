@@ -1,0 +1,57 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: plex
+  namespace: home
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: plex
+      version: 6.3.3
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    env:
+      TZ: "Europe/London"
+      PLEX_CLAIM: claim-i_MHUcPw7SaBPxxQ5Ss7
+    hostNetwork: true
+    podSecurityContext:
+      runAsUser: 568
+      runAsGroup: 568
+      fsGroup: 568
+      fsGroupChangePolicy: "Always"
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - host: plex.local
+            paths:
+              - path: /
+    persistence:
+      config:
+        enabled: true
+        mountPath: /config
+        accessMode: ReadWriteOnce
+        size: 10Gi
+        storageClass: longhorn
+      media:
+        enabled: true
+        mountPath: /media
+        type: custom
+        volumeSpec:
+          nfs:
+            server: "192.168.0.59"
+            path: "/volume2/Media"

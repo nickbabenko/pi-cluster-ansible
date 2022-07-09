@@ -6,12 +6,12 @@
     - role: prereq
     - role: download
     - role: raspberrypi
-    # - role: mqttreporter
+    - role: mqttreporter
 - hosts: master
   become: yes
   roles:
     - role: k3s/master
-# - hosts: nodes
-#   become: yes
-#   roles:
-#     - role: k3s/node
+- hosts: nodes
+  become: yes
+  roles:
+    - role: k3s/node
