@@ -39,7 +39,7 @@ spec:
         type: custom
         volumeSpec:
           nfs:
-            server: "192.168.0.59"
+            server: "192.168.0.13"
             path: "/volume2/Media"
     podSecurityContext:
       runAsUser: 1026
