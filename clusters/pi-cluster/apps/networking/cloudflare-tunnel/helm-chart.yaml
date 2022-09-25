@@ -34,9 +34,9 @@ spec:
     cloudflare:
       ingress:
         - hostname: radarr.picluster.nickbabenko.com
-          service: http://radarr.media.svc.cluster.local:7878
+          service: https://nginx-ingress-ingress-nginx-controller.networking.svc.cluster.local:443
         - hostname: sonarr.picluster.nickbabenko.com
-          service: http://sonarr.media.svc.cluster.local:8989
+          service: https://nginx-ingress-ingress-nginx-controller.networking.svc.cluster.local:443
   valuesFrom:
     - kind: Secret
       name: cloudflare-tunnel-secret-values
