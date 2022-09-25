@@ -56,7 +56,7 @@ spec:
           - host: radarr.local
             paths:
               - path: /
-          - hosts: radarr.picluster.nickbabenko.com
+          - host: radarr.picluster.nickbabenko.com
             paths:
               - path: /
         tls:
