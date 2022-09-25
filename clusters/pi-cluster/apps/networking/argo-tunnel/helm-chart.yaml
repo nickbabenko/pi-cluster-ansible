@@ -1,0 +1,57 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: GitRepository
+metadata:
+  name: cloudflare-tunnel
+  namespace: flux-system
+spec:
+  interval: 1h
+  url: https://cloudflare.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cloudflare-tunnel-radarr
+  namespace: networking
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: cloudflare-tunnel
+      version: '0.1.0'
+      sourceRef:
+        kind: GitRepository
+        name: cloudflare-tunnel
+        namespace: flux-system
+      interval: 1m
+  values:
+    replicaCount: 2
+  valuesFrom:
+    - secretKeyRef:
+        name: cloudflare-tunnel-radarr-secret-values
+        namespace: networking
+        key: values.yaml
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cloudflare-tunnel-sonarr
+  namespace: networking
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: cloudflare-tunnel
+      version: '0.1.0'
+      sourceRef:
+        kind: GitRepository
+        name: cloudflare-tunnel
+        namespace: flux-system
+      interval: 1m
+  values:
+    replicaCount: 2
+  valuesFrom:
+    - secretKeyRef:
+        name: cloudflare-tunnel-sonarr-secret-values
+        namespace: networking
+        key: values.yaml
