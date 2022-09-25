@@ -13,7 +13,7 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: cloudflare-tunnel-radarr
+  name: cloudflare-tunnel
   namespace: networking
 spec:
   interval: 5m
@@ -31,33 +31,13 @@ spec:
     image:
       repository: erisamoe/cloudflared
       tag: 2022.9.1
+    cloudflare:
+      ingress:
+        - hostname: radarr.picluster.nickbabenko.com
+          service: http://radarr.media.svc.cluster.local:7878
+        - hostname: sonarr.picluster.nickbabenko.com
+          service: http://sonarr.media.svc.cluster.local:8989
   valuesFrom:
     - kind: Secret
-      name: cloudflare-tunnel-radarr-secret-values
-      valuesKey: values.yaml
----
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
-kind: HelmRelease
-metadata:
-  name: cloudflare-tunnel-sonarr
-  namespace: networking
-spec:
-  interval: 5m
-  chart:
-    spec:
-      chart: ./helm/cloudflare-tunnel
-      version: '0.1.0'
-      sourceRef:
-        kind: GitRepository
-        name: cloudflare-tunnel
-        namespace: flux-system
-      interval: 1m
-  values:
-    replicaCount: 2
-    image:
-      repository: erisamoe/cloudflared
-      tag: 2022.9.1
-  valuesFrom:
-    - kind: Secret
-      name: cloudflare-tunnel-sonarr-secret-values
+      name: cloudflare-tunnel-secret-values
       valuesKey: values.yaml
