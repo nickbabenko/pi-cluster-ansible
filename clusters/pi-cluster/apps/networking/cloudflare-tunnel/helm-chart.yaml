@@ -7,6 +7,8 @@ metadata:
 spec:
   interval: 1h
   url: https://github.com/cloudflare/argo-tunnel-examples.git
+  ref:
+    branch: master
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -17,7 +19,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: cloudflare-tunnel
+      chart: ./helm/cloudflare-tunnel
       version: '0.1.0'
       sourceRef:
         kind: GitRepository
@@ -40,7 +42,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: cloudflare-tunnel
+      chart: ./helm/cloudflare-tunnel
       version: '0.1.0'
       sourceRef:
         kind: GitRepository
