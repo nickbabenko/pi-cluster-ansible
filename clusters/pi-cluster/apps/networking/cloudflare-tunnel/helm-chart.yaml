@@ -28,6 +28,9 @@ spec:
       interval: 1m
   values:
     replicaCount: 2
+    image:
+      repository: erisamoe/cloudflared
+      tag: 2022.9.1
   valuesFrom:
     - kind: Secret
       name: cloudflare-tunnel-radarr-secret-values
@@ -51,6 +54,9 @@ spec:
       interval: 1m
   values:
     replicaCount: 2
+    image:
+      repository: erisamoe/cloudflared
+      tag: 2022.9.1
   valuesFrom:
     - kind: Secret
       name: cloudflare-tunnel-sonarr-secret-values
