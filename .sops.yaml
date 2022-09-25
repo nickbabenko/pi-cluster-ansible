@@ -1,3 +1,4 @@
+---
 creation_rules:
   - path_regex: .*.enc.yaml
     encrypted_regex: ^(data|stringData)$
