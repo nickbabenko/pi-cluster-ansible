@@ -50,10 +50,19 @@ spec:
       main:
         enabled: true
         ingressClassName: nginx
+        annotations:
+          cert-manager.io/issuer: "letsencrypt-prod"
         hosts:
           - host: radarr.local
             paths:
               - path: /
+          - hosts: radarr.picluster.nickbabenko.com
+            paths:
+              - path: /
+        tls:
+          - secretName: radarr-ingress-tls
+            hosts:
+              - radarr.picluster.nickbabenko.com
     resources:
       limits:
         cpu: 750m
