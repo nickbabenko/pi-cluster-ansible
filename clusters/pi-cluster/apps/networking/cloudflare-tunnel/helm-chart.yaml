@@ -34,10 +34,10 @@ spec:
     cloudflare:
       enableWarp: true
       ingress:
-        - hostname: radarr.picluster.nickbabenko.com
+        - hostname: radarr.nickbabenko.com
           service: http://radarr.media.svc.cluster.local
-        - hostname: sonarr.picluster.nickbabenko.com
-          service: https://nginx-ingress-ingress-nginx-controller.networking.svc.cluster.local:443
+        - hostname: sonarr.nickbabenko.com
+          service: http://sonarr.media.svc.cluster.local
   valuesFrom:
     - kind: Secret
       name: cloudflare-tunnel-secret-values
