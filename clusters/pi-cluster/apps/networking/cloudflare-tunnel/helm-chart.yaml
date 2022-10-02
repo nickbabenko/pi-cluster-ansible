@@ -31,7 +31,7 @@ spec:
     image:
       repository: erisamoe/cloudflared
       tag: 2022.9.1
-    warp_routing:
+    warp-routing:
       enabled: true
     cloudflare:
       ingress:
