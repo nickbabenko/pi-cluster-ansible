@@ -31,9 +31,8 @@ spec:
     image:
       repository: erisamoe/cloudflared
       tag: 2022.9.1
-    warp-routing:
-      enabled: true
     cloudflare:
+      enableWarp: true
       ingress:
         - hostname: radarr.picluster.nickbabenko.com
           service: http://radarr.media.svc.cluster.local
