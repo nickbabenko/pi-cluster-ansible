@@ -49,3 +49,4 @@ spec:
         jwk_set_url: https://nickbabenko.cloudflareaccess.com/cdn-cgi/access/certs
         auto_sign_up: true
         email_claim: email
+        username_claim: email
