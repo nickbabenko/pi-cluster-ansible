@@ -25,3 +25,5 @@ spec:
   values:
     env:
       MQTT_ADDRESS: mosquitto
+    metrics:
+      enabled: true
