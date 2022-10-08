@@ -34,8 +34,6 @@ spec:
       enabled: true
       storageClassName: longhorn
     grafana.ini:
-      auth:
-        disable_login_form: true
       auth.anonymous:
         enabled: true
         org_name: Nick Babenko
