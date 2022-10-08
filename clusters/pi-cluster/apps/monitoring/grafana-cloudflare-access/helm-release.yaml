@@ -16,6 +16,9 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    image:
+      name: nickbabenko/cloudflare-access-grafana
+      tag: 1.0.0
     config:
       forward_host: grafana.monitoring.svc.cluster.local
   valuesFrom:
