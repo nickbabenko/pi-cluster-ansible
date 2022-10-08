@@ -25,13 +25,13 @@ spec:
             - containerPort: {{.Values.deployment.port}}
           env:
             - name: AUTHDOMAIN
-              value: {{.Values.auth_domain}}
+              value: {{.Values.config.auth_domain}}
             - name: POLICYAUD
-              value: {{.Values.policy_aud}}
+              value: {{.Values.config.policy_aud}}
             - name: FORWARDHEADER
-              value: {{.Values.forward_header}}
+              value: {{.Values.config.forward_header}}
             - name: FORWARDHOST
-              value: {{.Values.forward_host}}
+              value: {{.Values.config.forward_host}}
             - name: ADDR
               value: {{.Values.config.address}}
       restartPolicy: Always
