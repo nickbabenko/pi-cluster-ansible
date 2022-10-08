@@ -19,10 +19,10 @@ spec:
         app: cloudflare-access-grafana
     spec:
       containers:
-        - image: "{{ .Value.image.name }}:{{ .Value.image.tag }}"
+        - image: "{{ .Values.image.name }}:{{ .Values.image.tag }}"
           name: cloudflare-access-grafana
           ports:
-            - containerPort: {{.Value.deployment.port}}
+            - containerPort: {{.Values.deployment.port}}
           env:
             - name: AUTHDOMAIN
               value: {{.Values.auth_domain}}
