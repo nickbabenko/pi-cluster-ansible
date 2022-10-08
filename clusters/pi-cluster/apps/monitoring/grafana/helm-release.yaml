@@ -33,7 +33,7 @@ spec:
       type: pvc
       enabled: true
       storageClassName: longhorn
-    grafana.ini: |
+    grafana.ini:
       auth.proxy:
         enabled: true
         header_name: cf-access-authenticated-user-email
