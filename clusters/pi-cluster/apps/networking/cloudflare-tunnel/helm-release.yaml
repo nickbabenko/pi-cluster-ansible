@@ -39,7 +39,6 @@ spec:
         - hostname: sonarr.nickbabenko.com
           service: http://sonarr.media.svc.cluster.local:8989
         - hostname: grafana.nickbabenko.com
-          # service: http://cloudflare-access-grafana.monitoring.svc.cluster.local:3001
           service: http://grafana.monitoring.svc.cluster.local
   valuesFrom:
     - kind: Secret

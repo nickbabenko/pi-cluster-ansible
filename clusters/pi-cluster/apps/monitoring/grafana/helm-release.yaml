@@ -34,19 +34,6 @@ spec:
       enabled: true
       storageClassName: longhorn
     grafana.ini:
-      # users:
-      #   allow_sign_up: false
-      #   auto_assign_org: true
-      #   auto_assign_org_role: Editor
-      # auth.proxy:
-      #   enabled: true
-      #   header_name: X-WEBAUTH-USER
-      #   header_property: email
-      # auto_sign_up: true
-      auth.jwt:
+      auth.anonymous:
         enabled: true
-        header_name: Cf-Access-Jwt-Assertion
-        jwk_set_url: https://nickbabenko.cloudflareaccess.com/cdn-cgi/access/certs
-        auto_sign_up: true
-        email_claim: email
-        username_claim: email
+      org_name: Nick Babenko
