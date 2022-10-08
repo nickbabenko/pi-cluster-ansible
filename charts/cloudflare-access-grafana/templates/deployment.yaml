@@ -25,13 +25,13 @@ spec:
             - containerPort: {{.Value.deployment.port}}
           env:
             - name: AUTHDOMAIN
-              value: https://<your-own-domain>.cloudflareaccess.com
+              value: {{.Values.auth_domain}}
             - name: POLICYAUD
-              value: <YOUR_POLICY_AUD_TOKEN>
+              value: {{.Values.policy_aud}}
             - name: FORWARDHEADER
-              value: X-WEBAUTH-USER
+              value: {{.Values.forward_header}}
             - name: FORWARDHOST
-              value: <grafana-host>:3000
+              value: {{.Values.forward_host}}
             - name: ADDR
-              value: :3001
+              value: {{.Values.config.address}}
       restartPolicy: Always
