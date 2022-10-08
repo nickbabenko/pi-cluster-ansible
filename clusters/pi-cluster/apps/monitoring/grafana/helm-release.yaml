@@ -37,4 +37,4 @@ spec:
       auth.anonymous:
         enabled: true
         org_name: Nick Babenko
-        org_role: Editor
+        org_role: Admin
