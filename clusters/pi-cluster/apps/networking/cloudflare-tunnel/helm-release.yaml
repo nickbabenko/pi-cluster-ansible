@@ -20,7 +20,7 @@ spec:
   chart:
     spec:
       chart: ./helm/cloudflare-tunnel
-      version: '0.1.0'
+      version: "0.1.0"
       sourceRef:
         kind: GitRepository
         name: cloudflare-tunnel
@@ -39,7 +39,7 @@ spec:
         - hostname: sonarr.nickbabenko.com
           service: http://sonarr.media.svc.cluster.local:8989
         - hostname: grafana.nickbabenko.com
-          service: http://grafana.monitoring.svc.cluster.local
+          service: http://cloudflare-access-grafana.monitoring.svc.cluster.local:3001
   valuesFrom:
     - kind: Secret
       name: cloudflare-tunnel-secret-values

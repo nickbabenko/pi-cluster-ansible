@@ -34,9 +34,12 @@ spec:
       enabled: true
       storageClassName: longhorn
     grafana.ini:
+      users:
+        allow_sign_up: false
+        auto_assign_org: true
+        auto_assign_org_role: Editor
       auth.proxy:
         enabled: true
-        header_name: cf-access-authenticated-user-email
+        header_name: X-WEBAUTH-USER
         header_property: email
         auto_sign_up: true
-        enable_login_token: false

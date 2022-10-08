@@ -1,0 +1,13 @@
+image:
+  name: jorgelbg/cloudflare-access-grafana
+  tag: latest
+service:
+  port: 3001
+deployment:
+  port: 3001
+config:
+  auth_domain:
+  policy_aud:
+  forward_header: X-WEBAUTH-USER
+  forward_host:
+  address: :3001
