@@ -37,3 +37,10 @@ spec:
       auth.anonymous:
         enabled: true
         org_role: Editor
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            type: prometheus
+            url: http://prometheus-server.monitoring.svc.cluster.local
