@@ -36,5 +36,4 @@ spec:
     grafana.ini:
       auth.anonymous:
         enabled: true
-        org_name: Nick Babenko
-        org_role: Admin
+        org_role: Editor
