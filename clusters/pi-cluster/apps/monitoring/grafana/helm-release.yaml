@@ -48,4 +48,4 @@ spec:
         header_name: Cf-Access-Jwt-Assertion
         jwk_set_url: https://nickbabenko.cloudflareaccess.com/cdn-cgi/access/certs
         auto_sign_up: true
-        email_claim: sub
+        email_claim: email
