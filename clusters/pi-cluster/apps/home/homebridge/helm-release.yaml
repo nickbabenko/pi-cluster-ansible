@@ -34,7 +34,7 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         storageClass: longhorn
-      static_config:
+      static-config:
         enabled: true
         mountPath: /test/config.json
         type: configMap
