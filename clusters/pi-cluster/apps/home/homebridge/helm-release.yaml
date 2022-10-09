@@ -40,6 +40,12 @@ spec:
         subPath: config.json
         type: secret
         name: homebridge-secret-values
+      static-package:
+        enabled: true
+        mountPath: /homebridge/package.json
+        subPath: package.json
+        type: configMap
+        name: homebridge-package
     hostNetwork: true
     ingress:
       main:
@@ -60,3 +66,17 @@ spec:
         data:
           startup.sh: |
             npm install homebridge-google-nest-sdm homebridge-mqttthing homebridge-ring homebridge-securitysystem homebridge-z2mhomebridge_config
+      package:
+        enabled: true
+        data:
+          package.json: |
+            {
+              "private": true,
+              "dependencies": {
+                "homebridge-google-nest-sdm": "1.1.4",
+                "homebridge-mqttthing": "1.1.42",
+                "homebridge-ring": "11.3.0",
+                "homebridge-securitysystem": "6.5.2",
+                "homebridge-z2m": "1.9.2"
+              }
+            }
