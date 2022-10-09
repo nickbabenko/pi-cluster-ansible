@@ -27,6 +27,7 @@ spec:
       TZ: "Europe/London"
       PGID: 0
       PUID: 0
+      UIX_CONFIG_PATH: /config/config.json
     persistence:
       # config:
       #   enabled: true
@@ -56,8 +57,6 @@ spec:
     envFrom:
       - secretRef:
           name: homebridge-secret-values
-    env:
-      UIX_CONFIG_PATH: /config/config.json
     configmap:
       scripts:
         enabled: true
