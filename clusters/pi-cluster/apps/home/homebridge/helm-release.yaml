@@ -28,15 +28,15 @@ spec:
       PGID: 0
       PUID: 0
     persistence:
+      # config:
+      #   enabled: true
+      #   mountPath: /homebridge
+      #   accessMode: ReadWriteOnce
+      #   size: 1Gi
+      #   storageClass: longhorn
       config:
         enabled: true
         mountPath: /homebridge
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        storageClass: longhorn
-      static-config:
-        enabled: true
-        mountPath: /test/config.json
         type: configMap
         name: homebridge-config
     hostNetwork: true
