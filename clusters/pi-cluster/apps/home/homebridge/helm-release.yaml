@@ -34,6 +34,12 @@ spec:
       #   accessMode: ReadWriteOnce
       #   size: 1Gi
       #   storageClass: longhorn
+      node-modules:
+        enabled: true
+        mountPath: /homebridge/node_modules
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: longhorn
       static-config:
         enabled: true
         mountPath: /homebridge/config.json
