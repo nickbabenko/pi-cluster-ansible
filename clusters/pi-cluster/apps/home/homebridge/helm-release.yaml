@@ -34,7 +34,7 @@ spec:
       #   accessMode: ReadWriteOnce
       #   size: 1Gi
       #   storageClass: longhorn
-      config:
+      static_config:
         enabled: true
         mountPath: /homebridge
         type: configMap
