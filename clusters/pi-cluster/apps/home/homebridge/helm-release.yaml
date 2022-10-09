@@ -55,7 +55,7 @@ spec:
       fsGroup: 0
     envFrom:
       - secretRef:
-          name: homebrige-secret-values
+          name: homebridge-secret-values
     configmap:
       scripts:
         enabled: true
