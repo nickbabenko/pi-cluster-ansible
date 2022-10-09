@@ -39,7 +39,7 @@ spec:
         mountPath: /homebridge/config.json
         subPath: config.json
         type: secret
-        name: homebridge-config
+        name: homebridge-secret-values
     hostNetwork: true
     ingress:
       main:
@@ -54,9 +54,6 @@ spec:
               - path: /
     podSecurityContext:
       fsGroup: 0
-    envFrom:
-      - secretRef:
-          name: homebridge-secret-values
     # configmap:
     # scripts:
     #   enabled: false
