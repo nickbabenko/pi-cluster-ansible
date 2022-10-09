@@ -62,7 +62,7 @@ spec:
         data:
           startup.sh: |
             npm install homebridge-google-nest-sdm homebridge-mqttthing homebridge-ring homebridge-securitysystem homebridge-z2mhomebridge_config
-      homebridge_config:
+      config:
         enabled: true
         data:
           config.json: |
