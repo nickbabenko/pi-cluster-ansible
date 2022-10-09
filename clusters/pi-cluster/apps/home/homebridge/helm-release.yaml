@@ -57,9 +57,9 @@ spec:
     envFrom:
       - secretRef:
           name: homebridge-secret-values
-    configmap:
-      # scripts:
-      #   enabled: false
-      #   data:
-      #     startup.sh: |
-      #       npm install homebridge-google-nest-sdm homebridge-mqttthing homebridge-ring homebridge-securitysystem homebridge-z2mhomebridge_config
+    # configmap:
+    # scripts:
+    #   enabled: false
+    #   data:
+    #     startup.sh: |
+    #       npm install homebridge-google-nest-sdm homebridge-mqttthing homebridge-ring homebridge-securitysystem homebridge-z2mhomebridge_config
