@@ -38,7 +38,7 @@ spec:
         enabled: true
         mountPath: /homebridge/config.json
         subPath: config.json
-        type: configMap
+        type: secret
         name: homebridge-config
     hostNetwork: true
     ingress:
@@ -63,90 +63,3 @@ spec:
       #   data:
       #     startup.sh: |
       #       npm install homebridge-google-nest-sdm homebridge-mqttthing homebridge-ring homebridge-securitysystem homebridge-z2mhomebridge_config
-      config:
-        enabled: true
-        data:
-          config.json: |
-            {
-              "bridge": {
-                "name": "Homebridge C88B",
-                "username": "0E:4C:0F:8B:C8:8B",
-                "port": 51978,
-                "pin": process.env.PORT
-              },
-              "accessories": [
-                {
-                  "name": "Security System",
-                  "default_mode": "Off",
-                  "arm_seconds": 0,
-                  "trigger_seconds": 0,
-                  "reset_minutes": 10,
-                  "save_state": false,
-                  "proxy_mode": false,
-                  "test_mode": false,
-                  "override_off": false,
-                  "reset_off_flow": false,
-                  "double_knock": false,
-                  "double_knock_seconds": 90,
-                  "double_knock_modes": [
-                    "Away"
-                  ],
-                  "tripped_sensor": false,
-                  "tripped_sensor_seconds": 5,
-                  "siren_sensor": false,
-                  "siren_sensor_seconds": 5,
-                  "reset_sensor": false,
-                  "mode_switches": false,
-                  "mode_off_switch": true,
-                  "mode_away_extended_switch": false,
-                  "mode_pause_switch": false,
-                  "pause_minutes": 0,
-                  "arming_lock_switch": false,
-                  "arming_lock_switches": false,
-                  "siren_switch": false,
-                  "siren_override_switch": false,
-                  "siren_mode_switches": true,
-                  "audio_switch": false,
-                  "audio": false,
-                  "audio_language": "en-US",
-                  "audio_volume": "100",
-                  "audio_arming_looped": false,
-                  "audio_alert_looped": false,
-                  "accessory": "security-system"
-                }
-              ],
-              "platforms": [
-                {
-                  "name": "Config",
-                  "port": 8581,
-                  "platform": "config"
-                },
-                {
-                  "mqtt": {
-                    "base_topic": "zigbee2mqtt",
-                    "server": "mqtt://mosquitto:1883",
-                    "reject_unauthorized": false,
-                    "keepalive": 60,
-                    "version": 4,
-                    "disable_qos": false
-                  },
-                  "defaults": {
-                    "exclude": false
-                  },
-                  "exclude_grouped_devices": false,
-                  "platform": "zigbee2mqtt"
-                },
-                {
-                  "refreshToken": process.env.RING_REFRESH_TOKEN,
-                  "platform": "Ring"
-                },
-                {
-                  "clientId": process.env.NEST_SDM_CLIENT_ID,
-                  "clientSecret": process.env.NEST_SDM_CLIENT_SECRET,
-                  "projectId": process.env.NEST_SDM_PROJECT_ID,
-                  "refreshToken": process.env.NEST_SDM_REFRESH_TOKEN,
-                  "subscriptionId": process.env.NEST_SDM_SUBSCRIPTION_ID,
-                  "platform": "homebridge-google-nest-sdm"
-                }
-              ]
-            }
