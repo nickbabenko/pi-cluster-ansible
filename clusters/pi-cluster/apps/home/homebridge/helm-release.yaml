@@ -27,7 +27,6 @@ spec:
       TZ: "Europe/London"
       PGID: 0
       PUID: 0
-      UIX_CONFIG_PATH: /config/config.json
     persistence:
       # config:
       #   enabled: true
@@ -37,7 +36,7 @@ spec:
       #   storageClass: longhorn
       static-config:
         enabled: true
-        mountPath: /config
+        mountPath: /homebridge
         type: configMap
         name: homebridge-config
     hostNetwork: true
