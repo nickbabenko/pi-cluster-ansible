@@ -40,6 +40,12 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         storageClass: longhorn
+      npm-cache:
+        enabled: true
+        mountPath: /root/.npm
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: longhorn
       static-config:
         enabled: true
         mountPath: /homebridge/config.json
