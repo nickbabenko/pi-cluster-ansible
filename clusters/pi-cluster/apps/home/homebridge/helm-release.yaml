@@ -62,7 +62,7 @@ spec:
       fsGroup: 0
     configmap:
       scripts:
-        enabled: true
+        enabled: false
         data:
           startup.sh: |
             npm install homebridge-google-nest-sdm homebridge-mqttthing homebridge-ring homebridge-securitysystem homebridge-z2mhomebridge_config
