@@ -28,12 +28,12 @@ spec:
       PGID: 0
       PUID: 0
     persistence:
-      # config:
-      #   enabled: true
-      #   mountPath: /homebridge
-      #   accessMode: ReadWriteOnce
-      #   size: 1Gi
-      #   storageClass: longhorn
+      config:
+        enabled: true
+        mountPath: /homebridge
+        accessMode: ReadWriteOnce
+        size: 1Gi
+        storageClass: longhorn
       node-modules:
         enabled: true
         mountPath: /homebridge/node_modules
@@ -46,12 +46,12 @@ spec:
         accessMode: ReadWriteOnce
         size: 1Gi
         storageClass: longhorn
-      static-config:
-        enabled: true
-        mountPath: /homebridge/config.json
-        subPath: config.json
-        type: secret
-        name: homebridge-secret-values
+      # static-config:
+      #   enabled: true
+      #   mountPath: /homebridge/config.json
+      #   subPath: config.json
+      #   type: secret
+      #   name: homebridge-secret-values
       static-package:
         enabled: true
         mountPath: /homebridge/package.json
