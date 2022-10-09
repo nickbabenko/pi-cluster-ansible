@@ -36,7 +36,8 @@ spec:
       #   storageClass: longhorn
       static-config:
         enabled: true
-        mountPath: /homebridge
+        mountPath: /homebridge/config.json
+        subPath: config.json
         type: configMap
         name: homebridge-config
     hostNetwork: true
@@ -57,8 +58,8 @@ spec:
       - secretRef:
           name: homebridge-secret-values
     configmap:
-      scripts:
-        enabled: false
+      # scripts:
+      #   enabled: false
       #   data:
       #     startup.sh: |
       #       npm install homebridge-google-nest-sdm homebridge-mqttthing homebridge-ring homebridge-securitysystem homebridge-z2mhomebridge_config
