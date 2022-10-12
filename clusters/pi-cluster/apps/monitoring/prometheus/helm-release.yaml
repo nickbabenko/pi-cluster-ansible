@@ -47,17 +47,21 @@ spec:
     remediation:
       retries: 3
   values:
+    commonLabels:
+      monitor: prometheus
     alertmanager:
       persistentVolume:
         storageClass: longhorn
     prometheus:
       persistentVolume:
         storageClass: longhorn
-      # prometheusSpec:
-      #   serviceMonitorSelector:
-      #     matchLabels:
-      #       release: prometheus
-      #       app.kubernetes.io/name: mqtt-exporter
+      prometheusSpec:
+        serviceMonitorSelector:
+          matchExpressions:
+            - key: monitor
+              operator: In
+              values:
+                - prometheus
     grafana:
       persistence:
         type: pvc
