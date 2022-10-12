@@ -27,3 +27,6 @@ spec:
       MQTT_ADDRESS: mosquitto.home.svc.cluster.local
     metrics:
       enabled: true
+      serviceMonitor:
+        labels:
+          monitor: prometheus
