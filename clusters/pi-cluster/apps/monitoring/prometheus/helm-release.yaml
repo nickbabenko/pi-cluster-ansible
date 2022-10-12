@@ -53,6 +53,11 @@ spec:
     prometheus:
       persistentVolume:
         storageClass: longhorn
+      prometheusSpec:
+        serviceMonitorSelector:
+          matchLabels:
+            release: prometheus
+            app.kubernetes.io/name: mqtt-exporter
     grafana:
       persistence:
         type: pvc
