@@ -34,4 +34,5 @@ spec:
   interval: 1m0s
   targetNamespace: home
   values:
+    basic_auth: false
     broker: tcp://mosquitto:1883
