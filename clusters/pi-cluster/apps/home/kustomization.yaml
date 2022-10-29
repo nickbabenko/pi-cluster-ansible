@@ -5,3 +5,4 @@ resources:
   - zigbee2mqtt
   - mosquitto
   - mqtt-exporter
+  - openfaas
