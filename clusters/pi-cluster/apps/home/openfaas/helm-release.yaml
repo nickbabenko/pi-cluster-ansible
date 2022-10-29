@@ -15,6 +15,7 @@ spec:
   interval: 1m0s
   targetNamespace: home
   values:
+    basic_auth: false
     operator:
       create: true
 ---
