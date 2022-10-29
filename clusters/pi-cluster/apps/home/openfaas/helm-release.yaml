@@ -17,3 +17,21 @@ spec:
   values:
     operator:
       create: true
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: openfaas-mqtt
+  namespace: home
+spec:
+  chart:
+    spec:
+      chart: mqtt-connector
+      sourceRef:
+        kind: HelmRepository
+        name: openfaas
+        namespace: flux-system
+  interval: 1m0s
+  targetNamespace: home
+  values:
+    broker: tcp://mosquitto:1883
