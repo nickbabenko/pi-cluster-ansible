@@ -37,5 +37,5 @@ spec:
   values:
     basic_auth: false
     broker: tcp://mosquitto:1883
-    topic: zigbee2mqtt
+    topic: zigbee2mqtt/Living room motion
     gateway_url: http://gateway:8080
