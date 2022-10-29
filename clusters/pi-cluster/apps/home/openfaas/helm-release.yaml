@@ -36,3 +36,4 @@ spec:
   values:
     basic_auth: false
     broker: tcp://mosquitto:1883
+    topic: zigbee2mqtt/
