@@ -32,13 +32,13 @@ spec:
         enabled: true
         mountPath: /homebridge
         accessMode: ReadWriteOnce
-        size: 1Gi
+        size: 4Gi
         storageClass: longhorn
       node-modules:
         enabled: true
         mountPath: /homebridge/node_modules
         accessMode: ReadWriteOnce
-        size: 1Gi
+        size: 2Gi
         storageClass: longhorn
       npm-cache:
         enabled: true
