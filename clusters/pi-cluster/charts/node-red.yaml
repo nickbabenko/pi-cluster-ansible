@@ -6,4 +6,4 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m0s
-  url: oci://ghcr.io/schwarzit/charts/node-red
+  url: https://ghcr.io/schwarzit/charts/node-red
