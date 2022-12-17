@@ -6,3 +6,4 @@ resources:
   - mosquitto
   - mqtt-exporter
   - openfaas
+  - node-red
