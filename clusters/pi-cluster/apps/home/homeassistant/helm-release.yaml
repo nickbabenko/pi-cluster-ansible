@@ -33,6 +33,8 @@ spec:
         mountPath: /data/config
     mariadb:
       enabled: true
+      image:
+        repository: jsurf/rpi-mariadb
     metrics:
       enabled: true
     prometheusRule:
