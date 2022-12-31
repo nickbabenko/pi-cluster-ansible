@@ -41,7 +41,7 @@ spec:
         - hostname: grafana.nickbabenko.com
           service: http://prometheus-grafana.monitoring.svc.cluster.local
         - hostname: ha.nickbabenko.com
-          service: http://homeassistant.home.svc.cluster.local
+          service: http://homeassistant-home-assistant.home.svc.cluster.local
   valuesFrom:
     - kind: Secret
       name: cloudflare-tunnel-secret-values
