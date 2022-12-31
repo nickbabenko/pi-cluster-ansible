@@ -30,7 +30,7 @@ spec:
         enabled: true
         storageClass: longhorn
         size: 4Gi
-        mountPath: /data/config
+        mountPath: /config
     mariadb:
       enabled: true
       image:
@@ -60,4 +60,4 @@ spec:
           - /data/config/.vscode
         volumeMounts:
           - name: config
-            mountPath: /data/config
+            mountPath: /config
