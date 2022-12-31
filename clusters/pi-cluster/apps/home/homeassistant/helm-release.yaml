@@ -35,6 +35,7 @@ spec:
       enabled: true
       image:
         repository: jsurf/rpi-mariadb
+        tag: 10.6-debian-20221215053526.9607a056
     metrics:
       enabled: true
     prometheusRule:
