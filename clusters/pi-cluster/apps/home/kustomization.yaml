@@ -7,3 +7,4 @@ resources:
   - mqtt-exporter
   - openfaas
   - node-red
+  - homeassistant

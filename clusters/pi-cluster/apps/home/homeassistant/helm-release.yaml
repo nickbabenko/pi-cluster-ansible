@@ -1,0 +1,60 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: homeassistant
+  namespace: home
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: homeassistant
+      version: 5.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    env:
+      TZ: "Europe/London"
+    persistence:
+      config:
+        enabled: true
+        storageClass: longhorn
+        size: 4Gi
+        mountPath: /data/config
+    mariadb:
+      enabled: true
+    metrics:
+      enabled: true
+    prometheusRule:
+      enabled: true
+      rules:
+        - alert: HomeAssistantAbsent
+          annotations:
+            description: Home Assistant has disappeared from Prometheus service discovery.
+            summary: Home Assistant is down.
+          expr: |
+            absent(up{job=~".*home-assistant.*"} == 1)
+          for: 5m
+          labels:
+            severity: critical
+    addons:
+      codeserver:
+        enabled: false
+        args:
+          - --auth
+          - none
+          - --user-data-dir
+          - /data/config/.vscode
+        volumeMounts:
+          - name: config
+            mountPath: /data/config

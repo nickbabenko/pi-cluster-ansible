@@ -40,6 +40,8 @@ spec:
           service: http://sonarr.media.svc.cluster.local:8989
         - hostname: grafana.nickbabenko.com
           service: http://prometheus-grafana.monitoring.svc.cluster.local
+        - hostname: ha.nickbabenko.com
+          service: http://homeassistant.home.svc.cluster.local
   valuesFrom:
     - kind: Secret
       name: cloudflare-tunnel-secret-values
