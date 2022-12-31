@@ -32,11 +32,8 @@ spec:
         size: 4Gi
         mountPath: /config
         accessMode: ReadWriteOnce
-    # mariadb:
-    #   enabled: true
-    #   image:
-    #     repository: tobi312/rpi-mariadb
-    # tag: 10.6-debian-20221215053526.9607a056
+    mariadb:
+      enabled: false
     metrics:
       enabled: true
     prometheusRule:
