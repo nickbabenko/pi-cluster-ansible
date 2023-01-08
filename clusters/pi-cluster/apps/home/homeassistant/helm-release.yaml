@@ -25,6 +25,8 @@ spec:
   values:
     env:
       TZ: "Europe/London"
+    image:
+      tag: 2023.1
     persistence:
       config:
         enabled: true
