@@ -1,0 +1,37 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: codeserver
+  namespace: home
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: code-server
+      version: 13.4.2
+      sourceRef:
+        kind: HelmRepository
+        name: nicholaswilde
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    env:
+      TZ: "Europe/London"
+      DEFAULT_WORKSPACE: /workspace
+    persistence:
+      config:
+        enabled: true
+        storageClass: longhorn
+        size: 2Gi
+      ha-config:
+        enabled: true
+        existingClaim: homeassistant-home-assistant-config
+        mountPath: /workspace/home-assistant

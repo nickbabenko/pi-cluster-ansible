@@ -8,3 +8,4 @@ resources:
   - openfaas
   - node-red
   - homeassistant
+  - codeserver
