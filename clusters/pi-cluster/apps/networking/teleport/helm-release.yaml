@@ -25,3 +25,7 @@ spec:
   values:
     clusterName: homeserv
     acme: true
+  valuesFrom:
+    - kind: Secret
+      name: teleport-secret-values
+      valuesKey: values.yaml
