@@ -25,7 +25,23 @@ spec:
   values:
     clusterName: homeserv
     acme: true
+    persistence:
+      existingClaimName: teleport-pvc
   valuesFrom:
     - kind: Secret
       name: teleport-secret-values
       valuesKey: values.yaml
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: teleport-pvc
+  namespace: networking
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: longhorn
+  volumeName: foo-pv
