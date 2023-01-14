@@ -6,6 +6,5 @@ resources:
   - mosquitto
   - mqtt-exporter
   - openfaas
-  - node-red
   - homeassistant
   - codeserver
