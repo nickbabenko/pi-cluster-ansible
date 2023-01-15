@@ -29,6 +29,12 @@ spec:
       existingClaimName: teleport-pvc
     service:
       kind: ClusterIP
+      spec:
+        ports:
+          - name: direct
+            port: 3080
+            targetPort: 3080
+            protocol: TCP
     proxyListenerMode: multiplex
   valuesFrom:
     - kind: Secret
