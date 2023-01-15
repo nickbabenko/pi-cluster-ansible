@@ -27,6 +27,9 @@ spec:
     acme: true
     persistence:
       existingClaimName: teleport-pvc
+    service:
+      kind: ClusterIP
+    proxyListenerMode: multiplex
   valuesFrom:
     - kind: Secret
       name: teleport-secret-values
