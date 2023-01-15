@@ -23,7 +23,7 @@ spec:
     remediation:
       retries: 3
   values:
-    clusterName: homeserv
+    clusterName: tele.nickbabenko.com
     acme: true
     persistence:
       existingClaimName: teleport-pvc
