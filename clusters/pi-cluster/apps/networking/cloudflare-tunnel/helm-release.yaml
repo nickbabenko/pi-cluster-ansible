@@ -46,6 +46,8 @@ spec:
           service: http://teleport.networking.svc.cluster.local:3080
         - hostname: code.nickbabenko.com
           service: http://codeserver-code-server.home.svc.cluster.local:8443
+        - hostname: z2m.nickbabenko.com
+          service: http://zigbee2mqtt.home.svc.cluster.local:8080
   valuesFrom:
     - kind: Secret
       name: cloudflare-tunnel-secret-values
