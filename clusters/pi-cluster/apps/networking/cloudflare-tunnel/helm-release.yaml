@@ -49,7 +49,7 @@ spec:
         - hostname: z2m.nickbabenko.com
           service: http://zigbee2mqtt.home.svc.cluster.local:8080
         - hostname: esphome.nickbabenko.com
-          service: http://esphome.home.svc.cluster.local:8080
+          service: http://esphome.home.svc.cluster.local:6052
   valuesFrom:
     - kind: Secret
       name: cloudflare-tunnel-secret-values
