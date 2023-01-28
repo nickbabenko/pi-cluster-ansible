@@ -9,3 +9,4 @@ resources:
   - homeassistant
   - codeserver
   - esphome
+  - appdaemon
