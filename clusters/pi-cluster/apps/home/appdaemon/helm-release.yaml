@@ -26,6 +26,8 @@ spec:
     env:
       HA_URL: http://homeassistant-home-assistant.home.svc.cluster.local:8123
       DASH_URL: "http://$HOSTNAME:5050"
+    image:
+      tag: "4.2.1"
     envFrom:
       - secretRef:
           name: appdaemon-secret-values
