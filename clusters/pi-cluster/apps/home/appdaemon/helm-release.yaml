@@ -27,8 +27,8 @@ spec:
       HA_URL: http://homeassistant-home-assistant.home.svc.cluster.local:8123
       DASH_URL: "http://$HOSTNAME:5050"
     envFrom:
-      - kind: Secret
-        name: appdaemon-secret-values
+      - secretRef:
+          name: appdaemon-secret-values
     metrics:
       enabled: true
       serviceMonitor:
