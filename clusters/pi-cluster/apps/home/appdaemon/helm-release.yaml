@@ -36,3 +36,8 @@ spec:
       serviceMonitor:
         labels:
           monitor: prometheus
+    persistence:
+      config:
+        enabled: true
+        storageClass: longhorn
+        size: 2Gi
