@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: my-tls-certificate
-  namespace: kube-system
+  namespace: cert-manager
 spec:
   secretName: my-app-tls-secret
   dnsNames:
