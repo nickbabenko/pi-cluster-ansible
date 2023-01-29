@@ -4,7 +4,7 @@ metadata:
   name: dnsmasq-service
   namespace: networking
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 53
       name: dns
