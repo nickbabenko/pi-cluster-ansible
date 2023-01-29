@@ -3,10 +3,11 @@ kind: ConfigMap
 metadata:
   name: dnsmasq-hosts
   namespace: networking
-data: |
-  192.168.0.21 home-assistant.local 
-  192.168.0.22 home-assistant.local
-  192.168.0.23 home-assistant.local
+data:
+  hosts: |
+    192.168.0.21 home-assistant.local 
+    192.168.0.22 home-assistant.local
+    192.168.0.23 home-assistant.local
 
 ---
 apiVersion: v1
@@ -14,8 +15,9 @@ kind: ConfigMap
 metadata:
   name: dnsmasq-conf
   namespace: networking
-data: |
-  user=root
-  port=53
-  bind-interfaces
-  log-queries
+data:
+  dnsmast.conf: |
+    user=root
+    port=53
+    bind-interfaces
+    log-queries
