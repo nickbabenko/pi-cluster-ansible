@@ -16,7 +16,7 @@ metadata:
   name: dnsmasq-conf
   namespace: networking
 data:
-  dnsmast.conf: |
+  dnsmasq.conf: |
     user=root
     port=53
     bind-interfaces
