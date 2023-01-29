@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: my-tls-certificate
+  namespace: kube-system
+spec:
+  secretName: my-app-tls-secret
+  dnsNames:
+    - homeassistant.local
+  issuerRef:
+    name: tls-ca-issuer
+    kind: ClusterIssuer

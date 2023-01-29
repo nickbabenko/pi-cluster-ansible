@@ -61,3 +61,17 @@ spec:
         volumeMounts:
           - name: config
             mountPath: /config
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/issuer: "tls-ca-issuer"
+        hosts:
+          - host: homeassistant.local
+            paths:
+              - path: /
+        tls:
+          - secretName: homeassistant-ingress-tls
+            hosts:
+              - homeassistant.local
