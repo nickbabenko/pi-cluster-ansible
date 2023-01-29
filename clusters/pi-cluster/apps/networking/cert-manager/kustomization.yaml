@@ -4,4 +4,3 @@ resources:
   - letsencrypt-production.yaml
   - secret.enc.yaml
   - local.yaml
-  - local-cert.yaml
