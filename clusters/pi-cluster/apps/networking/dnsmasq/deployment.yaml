@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnsmasq
+spec:
+  replicas: 1
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: dnsmasq
+  template:
+    metadata:
+      labels:
+        app: dnsmasq
+    spec:
+      containers:
+        - image: "abhiss/dnsmasq:v1.0"
+          imagePullPolicy: IfNotPresent
+          name: dnsmasq
+          ports:
+            - containerPort: 53
+          volumeMounts:
+            - mountPath: /etc/dnsmasq.conf
+              subPath: dnsmasq.conf
+              name: dnsmasq-conf
+            - mountPath: /etc/hosts
+              subPath: hosts
+              name: dnsmasq-hosts
+      volumes:
+        - name: dnsmasq-conf
+          configMap:
+            name: dnsmasq-conf
+        - name: dnsmasq-hosts
+          configMap:
+            name: dnsmasq-hosts
