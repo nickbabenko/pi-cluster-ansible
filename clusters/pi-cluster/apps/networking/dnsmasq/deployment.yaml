@@ -20,7 +20,7 @@ spec:
         app: dnsmasq
     spec:
       containers:
-        - image: "abhiss/dnsmasq:v1.0"
+        - image: "jasjeev4/rpi-dnsmasq:latest"
           imagePullPolicy: IfNotPresent
           name: dnsmasq
           ports:
