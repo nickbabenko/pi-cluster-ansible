@@ -21,3 +21,4 @@ data:
     port=53
     bind-interfaces
     log-queries
+    log-facility=/var/log/dnsmasq.log
