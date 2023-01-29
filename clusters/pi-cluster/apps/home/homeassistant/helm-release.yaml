@@ -71,7 +71,11 @@ spec:
           - host: homeassistant.home.local
             paths:
               - path: /
+          - host: homeassistant.local
+            paths:
+              - path: /
         tls:
           - secretName: homeassistant-ingress-tls
             hosts:
               - homeassistant.home.local
+              - homeassistant.local
