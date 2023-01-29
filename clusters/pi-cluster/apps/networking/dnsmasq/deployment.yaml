@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dnsmasq
+  namespace: networking
 spec:
   replicas: 1
   minReadySeconds: 15
