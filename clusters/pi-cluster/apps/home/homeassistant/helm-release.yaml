@@ -68,10 +68,10 @@ spec:
         annotations:
           cert-manager.io/issuer: "tls-ca-issuer"
         hosts:
-          - host: homeassistant.local
+          - host: homeassistant.home.local
             paths:
               - path: /
         tls:
           - secretName: homeassistant-ingress-tls
             hosts:
-              - homeassistant.local
+              - homeassistant.home.local

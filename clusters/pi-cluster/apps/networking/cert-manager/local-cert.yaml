@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: my-app-tls-secret
   dnsNames:
-    - homeassistant.local
+    - homeassistant.home.local
   issuerRef:
     name: tls-ca-issuer
     kind: ClusterIssuer
