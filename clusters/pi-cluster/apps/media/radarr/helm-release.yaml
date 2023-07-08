@@ -56,13 +56,6 @@ spec:
           - host: radarr.local
             paths:
               - path: /
-          - host: radarr.picluster.nickbabenko.com
-            paths:
-              - path: /
-        tls:
-          - secretName: radarr-ingress-tls
-            hosts:
-              - radarr.picluster.nickbabenko.com
     resources:
       limits:
         cpu: 750m
